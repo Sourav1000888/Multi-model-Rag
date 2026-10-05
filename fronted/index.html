@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Multi-RAG  Ask your documents</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- ============ Sidebar: upload + documents ============ -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1>Multi-RAG</h1>
+          <p id="status" class="status"><span class="dot"></span><span id="statusText">Connecting</span></p>
+        </div>
+      </div>
+
+      <label id="dropzone" class="dropzone" for="fileInput">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0l-4 4m4-4l4 4"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+        <strong>Upload a PDF</strong>
+        <span>Drop it here or click to browse</span>
+        <input id="fileInput" type="file" accept=".pdf" hidden />
+      </label>
+
+      <p id="uploadMessage" class="upload-message" hidden></p>
+
+      <div class="docs-head">
+        <h2>Your documents</h2>
+        <span id="docCount" class="count">0</span>
+      </div>
+      <ul id="docList" class="doc-list"></ul>
+    </aside>
+
+    <!-- ============ Main: chat ============ -->
+    <main class="main">
+      <header class="hero">
+        <h2>Ask anything about your documents</h2>
+        <p>Answers draw on text, tables and images from every PDF you've uploaded.</p>
+      </header>
+
+      <section id="chat" class="chat">
+        <div id="empty" class="empty">
+          <p>Try one of these:</p>
+          <div class="suggestions">
+            <button class="chip">Summarize this document</button>
+            <button class="chip">What do the tables show?</button>
+            <button class="chip">Describe the images and charts</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="composer">
+        <input id="questionInput" type="text" placeholder="Ask a question…" autocomplete="off" />
+        <button id="askBtn">Ask</button>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
